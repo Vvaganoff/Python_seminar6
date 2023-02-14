@@ -7,11 +7,19 @@ a1 = int(input("Введите первый член последователь�
 n = int(input("Введите количество членов последовательности: "))
 d = int(input("Введите d: "))
 
-def new_item(a, n, d):
-    return a + (n-1) * d
+# def new_item(a, n, d):
+#     return a + (n-1) * d
+#
+# list = [a1]
+# for i in range(2, n):
+#     list.append(new_item(a1, i, d))
+list = []
+def new_item(a, n, d, count):
 
-list = [a1]
-for i in range(2, n):
-    list.append(new_item(a1, i, d))
+    if count == 1:
+        return a + (n - 1)*d
+    list.append(a + (n - count)*d)
+    return new_item(a, n, d, count - 1)
 
+list.append(new_item(a1, n, d, n))
 print(list)
